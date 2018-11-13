@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class Auto {
     public static Object curH5Fragment;
     public static Activity h5Activity;
-    private static String TAG = "alilog";
+    private static String TAG = "alilogforest";
     private static ArrayList<String> canCollectEnergyidList = new ArrayList();
     private static Object curH5PageImpl;
     private static ArrayList<String> friendsRankUseridList = new ArrayList();
@@ -29,8 +29,8 @@ public class Auto {
     /**
      * 自动获取有能量的好友信息
      *
-     * @param loader
-     * @param response
+     * @param loader 加载器
+     * @param response json
      */
     public static void autoGetCanCollectUserIdList(final ClassLoader loader, String response) {
         if (isWebViewRefresh) {
@@ -72,8 +72,8 @@ public class Auto {
     /**
      * 自动获取能收取的能量ID
      *
-     * @param loader
-     * @param response
+     * @param loader 加载器
+     * @param response json
      */
 
     public static void autoGetCanCollectBubbleIdList(ClassLoader loader, String response) {
@@ -125,7 +125,7 @@ public class Auto {
     /**
      * 解析好友信息
      *
-     * @param response
+     * @param response json
      * @return
      */
     private static boolean parseFrienRankPageDataResponse(String response) {
@@ -313,9 +313,6 @@ public class Auto {
             Object resp = rpcCallMethod.invoke(null, "alipay.antmember.forest.h5.forFriendCollectEnergy",
                     jsonArray.toString(), "", Boolean.TRUE, null, null, Boolean.FALSE, curH5PageImpl, 0, "",
                     Boolean.FALSE, -1);
-            Method method = resp.getClass().getMethod("getResponse");
-            String response = (String) method.invoke(resp, new Object[]{});
-            Log.i(TAG, "forFriendCollectEnergy :" + response);
         } catch (Exception e) {
             Log.i(TAG, "forFriendCollectEnergy err: " + e.getMessage());
         }
