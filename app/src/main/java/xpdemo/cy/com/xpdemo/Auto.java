@@ -85,10 +85,12 @@ public class Auto {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                         if ("AVAILABLE".equals(jsonObject1.optString("collectStatus"))) {
-                            rpcCall_CollectEnergy(loader, jsonObject1.optString("userId"), jsonObject1.optInt("id"));
+                            Log.i(TAG, "可收 " + jsonObject1.optString("userId") +"---"+ jsonObject1.optLong("id"));
+                            rpcCall_CollectEnergy(loader, jsonObject1.optString("userId"),
+                                    jsonObject1.optLong("id"));
                         }
                         if (jsonObject1.optBoolean("canHelpCollect")) {
-                            forFriendCollectEnergy(loader, jsonObject1.optString("userId"), jsonObject1.optInt("id"));
+                            forFriendCollectEnergy(loader, jsonObject1.optString("userId"), jsonObject1.optLong("id"));
                         }
                     }
                 }
@@ -211,7 +213,7 @@ public class Auto {
      * @param userId
      * @param bubbleId
      */
-    public static void rpcCall_CollectEnergy(final ClassLoader loader, String userId, Integer bubbleId) {
+    public static void rpcCall_CollectEnergy(final ClassLoader loader, String userId, Long bubbleId) {
         try {
             Method rpcCallMethod = getRpcCallMethod(loader);
             JSONArray jsonArray = new JSONArray();
@@ -295,7 +297,7 @@ public class Auto {
     }
 
 
-    public static void forFriendCollectEnergy(ClassLoader loader, String userId, Integer bubbleId) {
+    public static void forFriendCollectEnergy(ClassLoader loader, String userId, Long bubbleId) {
         try {
             Method rpcCallMethod = getRpcCallMethod(loader);
             JSONArray jsonArray = new JSONArray();
