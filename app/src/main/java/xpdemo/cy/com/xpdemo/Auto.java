@@ -189,7 +189,7 @@ public class Auto {
             JSONArray jsonArray = new JSONArray();
             JSONObject json = new JSONObject();
             json.put("userId", userId);
-            json.put("version", "20180917");
+            json.put("version", "20181220");
             jsonArray.put(json);
             Log.i(TAG, "call cancollect energy params:" + jsonArray);
 
@@ -229,9 +229,9 @@ public class Auto {
             String response = (String) method.invoke(resp, new Object[]{});
             boolean isSucc = Auto.parseCollectEnergyResponse(response);
             if (isSucc) {
-                Log.i(TAG, "collect energy userid:" + userId + ",bubbleId" + bubbleId);
+                Log.i(TAG, "userid：" + userId + ",bubbleId：" + bubbleId);
             } else {
-                Log.i(TAG, "collect energy userid:" + userId + ",bubbleId" + bubbleId);
+                Log.i(TAG, "userid：" + userId + ",bubbleId：" + bubbleId);
             }
         } catch (Exception e) {
             Log.i(TAG, "rpcCall_CanCollectEnergy err: " + Log.getStackTraceString(e));
