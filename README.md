@@ -9,3 +9,4 @@
 * adb install -r app-debug.apk （见根目录）
 ## 修复记录
 * 2019.1.28 修复BUG （Integer换为Long）
+* 2019.6.26 修复BUG （包名更改） 10-1-65.apk

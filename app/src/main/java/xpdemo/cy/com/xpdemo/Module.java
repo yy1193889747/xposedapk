@@ -70,7 +70,9 @@ public class Module implements IXposedHookLoadPackage {
                 });
             }
 
-            clazz = loader.loadClass("com.alipay.mobile.nebulabiz.rpc.H5RpcUtil");
+            // com.alipay.mobile.nebulaappproxy.api.rpc.H5RpcUtil  com.alipay.mobile.nebulabiz.rpc.H5RpcUtil
+            clazz = loader.loadClass("com.alipay.mobile.nebulaappproxy.api.rpc.H5RpcUtil");
+
             if (clazz != null) {
                 first = true;
                 Log.i(TAG, "first");
@@ -85,7 +87,7 @@ public class Module implements IXposedHookLoadPackage {
                         protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
                             super.beforeHookedMethod(param);
                             Log.i(TAG,
-                                    "param" + param.args[0] + "," + param.args[1] + "," + param.args[2] + ","
+                                    "param---" + param.args[0] + "," + param.args[1] + "," + param.args[2] + ","
                                             + param.args[3] + "," + param.args[4] + "," + param.args[5] + ","
                                             + param.args[6] + "," + param.args[7] + "," + param.args[8] + ","
                                             + param.args[9] + "," + param.args[10] + "," + param.args[11]);

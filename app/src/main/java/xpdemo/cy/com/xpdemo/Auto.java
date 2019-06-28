@@ -29,7 +29,7 @@ public class Auto {
     /**
      * 自动获取有能量的好友信息
      *
-     * @param loader 加载器
+     * @param loader   加载器
      * @param response json
      */
     public static void autoGetCanCollectUserIdList(final ClassLoader loader, String response) {
@@ -72,7 +72,7 @@ public class Auto {
     /**
      * 自动获取能收取的能量ID
      *
-     * @param loader 加载器
+     * @param loader   加载器
      * @param response json
      */
 
@@ -85,7 +85,7 @@ public class Auto {
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject jsonObject1 = jsonArray.getJSONObject(i);
                         if ("AVAILABLE".equals(jsonObject1.optString("collectStatus"))) {
-                            Log.i(TAG, "可收 " + jsonObject1.optString("userId") +"---"+ jsonObject1.optLong("id"));
+                            Log.i(TAG, "可收 " + jsonObject1.optString("userId") + "---" + jsonObject1.optLong("id"));
                             rpcCall_CollectEnergy(loader, jsonObject1.optString("userId"),
                                     jsonObject1.optLong("id"));
                         }
@@ -250,7 +250,7 @@ public class Auto {
             curH5PageImpl = hF.get(viewHolder);
             Class<?> h5PageClazz = loader.loadClass("com.alipay.mobile.h5container.api.H5Page");
             Class<?> jsonClazz = loader.loadClass("com.alibaba.fastjson.JSONObject");
-            Class<?> rpcClazz = loader.loadClass("com.alipay.mobile.nebulabiz.rpc.H5RpcUtil");
+            Class<?> rpcClazz = loader.loadClass("com.alipay.mobile.nebulaappproxy.api.rpc.H5RpcUtil");
             if (curH5PageImpl != null) {
                 Method callM = rpcClazz.getMethod("rpcCall", String.class, String.class, String.class, boolean.class,
                         jsonClazz, String.class, boolean.class, h5PageClazz, int.class, String.class, boolean.class,
@@ -296,6 +296,13 @@ public class Auto {
         }
     }
 
+    /**
+     * alipay.antmember.forest.h5.forFriendCollectEnergy,[{"bubbleIds":[],"targetUserId":""}],
+     *
+     * @param loader
+     * @param userId
+     * @param bubbleId
+     */
 
     public static void forFriendCollectEnergy(ClassLoader loader, String userId, Long bubbleId) {
         try {
